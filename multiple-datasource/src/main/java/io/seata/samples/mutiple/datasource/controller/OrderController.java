@@ -24,4 +24,13 @@ public class OrderController {
         log.info("收到下单请求,用户:{}, 商品:{}", placeOrderRequestVO.getUserId(), placeOrderRequestVO.getProductId());
         return orderService.placeOrder(placeOrderRequestVO);
     }
+
+    //  http://localhost:8081/order/create?userId=1&productId=1&price=5
+    @RequestMapping("/create")
+    @ResponseBody
+    public OperationResponse orderSubmit(PlaceOrderRequestVO placeOrderRequestVO) throws Exception {
+        log.info("收到下单请求,userId:{}, productId :{}", placeOrderRequestVO.getUserId(), placeOrderRequestVO.getProductId());
+        return orderService.placeOrder(placeOrderRequestVO);
+    }
+
 }
