@@ -30,6 +30,6 @@ public class BusinessService {
     public void purchase(String userId, String commodityCode, int orderCount) {
         LOGGER.info("purchase begin ... xid: " + RootContext.getXID());
         storageClient.deduct(commodityCode, orderCount);
-        orderClient.create(userId, commodityCode, orderCount);
+        orderClient.create(userId, commodityCode, orderCount); // accountClient.debit
     }
 }
