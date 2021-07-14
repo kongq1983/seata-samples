@@ -116,7 +116,7 @@ service {
   #vgroup->rgroup
   vgroup_mapping.fsp_tx_group = "default"  修改这里，fsp_tx_group这个事务组名称是我自定义的，一定要与client端的这个配置一致！否则会报错！
   #only support single node
-  default.grouplist = "127.0.0.1:8091"   此配置作用参考:https://blog.csdn.net/weixin_39800144/article/details/100726116
+  default.grouplist = "seata.com:8091"   此配置作用参考:https://blog.csdn.net/weixin_39800144/article/details/100726116
   #degrade current not support
   enableDegrade = false
   #disable
@@ -207,7 +207,7 @@ service {
   #vgroup->rgroup
   vgroup_mapping.fsp_tx_group = "default"   这个fsp_tx_group自定义命名很重要，server，client都要保持一致
   #only support single node
-  default.grouplist = "127.0.0.1:8091"
+  default.grouplist = "seata.com:8091"
   #degrade current not support
   enableDegrade = false
   #disable

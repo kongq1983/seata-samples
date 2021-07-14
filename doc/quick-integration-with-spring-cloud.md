@@ -182,7 +182,7 @@ service {
   #vgroup->rgroup
   vgroup_mapping.my_test_tx_group = "default"
   #only support single node
-  default.grouplist = "127.0.0.1:8091"
+  default.grouplist = "seata.com:8091"
   #degrade current not support
   enableDegrade = false
   #disable
@@ -228,7 +228,7 @@ store {
     datasource = "dbcp"
     ## mysql/oracle/h2/oceanbase etc.
     db-type = "mysql"
-    url = "jdbc:mysql://127.0.0.1:3306/seata"
+    url = "jdbc:mysql://db1.com:3306/seata"
     user = "mysql"
     password = "mysql"
     min-conn = 1

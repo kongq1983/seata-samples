@@ -775,7 +775,7 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/seata?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+    url: jdbc:mysql://db1.com:3306/seata?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
     username: root
     password: 123456
   application:
@@ -839,7 +839,7 @@ seata:
     vgroup-mapping: default # TC 集群（必须与seata-server保持一致）
     enable-degrade: false # 降级开关
     disable-global-transaction: false # 禁用全局事务（默认false）
-    grouplist: 127.0.0.1:8091
+    grouplist: seata.com:8091
   transport:
     shutdown:
       wait: 3
@@ -1148,8 +1148,8 @@ java.lang.RuntimeException: 测试抛异常后，分布式事务回滚！
 2020-01-08 11:05:35.793  INFO 23416 --- [:20883-thread-8] i.s.common.loader.EnhancedServiceLoader  : load LoadBalance[null] extension by class[io.seata.discovery.loadbalance.RandomLoadBalance]
 2020-01-08 11:05:35.908  WARN 23416 --- [:20883-thread-8] i.s.common.loader.EnhancedServiceLoader  : load [io.seata.rm.datasource.undo.parser.ProtostuffUndoLogParser] class fail. io/protostuff/runtime/RuntimeEnv
 2020-01-08 11:05:35.909  INFO 23416 --- [:20883-thread-8] i.s.common.loader.EnhancedServiceLoader  : load UndoLogParser[jackson] extension by class[io.seata.rm.datasource.undo.parser.JacksonUndoLogParser]
-2020-01-08 11:05:37.281  INFO 23416 --- [atch_RMROLE_1_8] i.s.core.rpc.netty.RmMessageListener     : onMessage:xid=192.168.10.103:8091:2032180177,branchId=2032180189,branchType=AT,resourceId=jdbc:mysql://127.0.0.1:3306/seata,applicationData=null
-2020-01-08 11:05:37.283  INFO 23416 --- [atch_RMROLE_1_8] io.seata.rm.AbstractRMHandler            : Branch Rollbacking: 192.168.10.103:8091:2032180177 2032180189 jdbc:mysql://127.0.0.1:3306/seata
+2020-01-08 11:05:37.281  INFO 23416 --- [atch_RMROLE_1_8] i.s.core.rpc.netty.RmMessageListener     : onMessage:xid=192.168.10.103:8091:2032180177,branchId=2032180189,branchType=AT,resourceId=jdbc:mysql://db1.com:3306/seata,applicationData=null
+2020-01-08 11:05:37.283  INFO 23416 --- [atch_RMROLE_1_8] io.seata.rm.AbstractRMHandler            : Branch Rollbacking: 192.168.10.103:8091:2032180177 2032180189 jdbc:mysql://db1.com:3306/seata
 2020-01-08 11:05:37.477  INFO 23416 --- [atch_RMROLE_1_8] i.s.r.d.undo.AbstractUndoLogManager      : xid 192.168.10.103:8091:2032180177 branch 2032180189, undo_log deleted with GlobalFinished
 2020-01-08 11:05:37.478  INFO 23416 --- [atch_RMROLE_1_8] io.seata.rm.AbstractRMHandler            : Branch Rollbacked result: PhaseTwo_Rollbacked
 ```
@@ -1160,8 +1160,8 @@ java.lang.RuntimeException: 测试抛异常后，分布式事务回滚！
 2020-01-08 11:05:36.470  INFO 17296 --- [:20880-thread-2] i.s.common.loader.EnhancedServiceLoader  : load LoadBalance[null] extension by class[io.seata.discovery.loadbalance.RandomLoadBalance]
 2020-01-08 11:05:36.648  WARN 17296 --- [:20880-thread-2] i.s.common.loader.EnhancedServiceLoader  : load [io.seata.rm.datasource.undo.parser.ProtostuffUndoLogParser] class fail. io/protostuff/runtime/RuntimeEnv
 2020-01-08 11:05:36.650  INFO 17296 --- [:20880-thread-2] i.s.common.loader.EnhancedServiceLoader  : load UndoLogParser[jackson] extension by class[io.seata.rm.datasource.undo.parser.JacksonUndoLogParser]
-2020-01-08 11:05:36.895  INFO 17296 --- [atch_RMROLE_1_8] i.s.core.rpc.netty.RmMessageListener     : onMessage:xid=192.168.10.103:8091:2032180177,branchId=2032180192,branchType=AT,resourceId=jdbc:mysql://127.0.0.1:3306/seata,applicationData=null
-2020-01-08 11:05:36.897  INFO 17296 --- [atch_RMROLE_1_8] io.seata.rm.AbstractRMHandler            : Branch Rollbacking: 192.168.10.103:8091:2032180177 2032180192 jdbc:mysql://127.0.0.1:3306/seata
+2020-01-08 11:05:36.895  INFO 17296 --- [atch_RMROLE_1_8] i.s.core.rpc.netty.RmMessageListener     : onMessage:xid=192.168.10.103:8091:2032180177,branchId=2032180192,branchType=AT,resourceId=jdbc:mysql://db1.com:3306/seata,applicationData=null
+2020-01-08 11:05:36.897  INFO 17296 --- [atch_RMROLE_1_8] io.seata.rm.AbstractRMHandler            : Branch Rollbacking: 192.168.10.103:8091:2032180177 2032180192 jdbc:mysql://db1.com:3306/seata
 2020-01-08 11:05:37.152  INFO 17296 --- [atch_RMROLE_1_8] i.s.r.d.undo.AbstractUndoLogManager      : xid 192.168.10.103:8091:2032180177 branch 2032180192, undo_log deleted with GlobalFinished
 2020-01-08 11:05:37.153  INFO 17296 --- [atch_RMROLE_1_8] io.seata.rm.AbstractRMHandler            : Branch Rollbacked result: PhaseTwo_Rollbacked
 ```
@@ -1174,8 +1174,8 @@ java.lang.RuntimeException: 测试抛异常后，分布式事务回滚！
 2020-01-08 11:05:32.097  INFO 24100 --- [:20888-thread-2] i.s.common.loader.EnhancedServiceLoader  : load LoadBalance[null] extension by class[io.seata.discovery.loadbalance.RandomLoadBalance]
 2020-01-08 11:05:33.130  WARN 24100 --- [:20888-thread-2] i.s.common.loader.EnhancedServiceLoader  : load [io.seata.rm.datasource.undo.parser.ProtostuffUndoLogParser] class fail. io/protostuff/runtime/RuntimeEnv
 2020-01-08 11:05:33.131  INFO 24100 --- [:20888-thread-2] i.s.common.loader.EnhancedServiceLoader  : load UndoLogParser[jackson] extension by class[io.seata.rm.datasource.undo.parser.JacksonUndoLogParser]
-2020-01-08 11:05:37.549  INFO 24100 --- [atch_RMROLE_1_8] i.s.core.rpc.netty.RmMessageListener     : onMessage:xid=192.168.10.103:8091:2032180177,branchId=2032180182,branchType=AT,resourceId=jdbc:mysql://127.0.0.1:3306/seata,applicationData=null
-2020-01-08 11:05:37.551  INFO 24100 --- [atch_RMROLE_1_8] io.seata.rm.AbstractRMHandler            : Branch Rollbacking: 192.168.10.103:8091:2032180177 2032180182 jdbc:mysql://127.0.0.1:3306/seata
+2020-01-08 11:05:37.549  INFO 24100 --- [atch_RMROLE_1_8] i.s.core.rpc.netty.RmMessageListener     : onMessage:xid=192.168.10.103:8091:2032180177,branchId=2032180182,branchType=AT,resourceId=jdbc:mysql://db1.com:3306/seata,applicationData=null
+2020-01-08 11:05:37.551  INFO 24100 --- [atch_RMROLE_1_8] io.seata.rm.AbstractRMHandler            : Branch Rollbacking: 192.168.10.103:8091:2032180177 2032180182 jdbc:mysql://db1.com:3306/seata
 2020-01-08 11:05:37.692  INFO 24100 --- [atch_RMROLE_1_8] i.s.r.d.undo.AbstractUndoLogManager      : xid 192.168.10.103:8091:2032180177 branch 2032180182, undo_log deleted with GlobalFinished
 2020-01-08 11:05:37.693  INFO 24100 --- [atch_RMROLE_1_8] io.seata.rm.AbstractRMHandler            : Branch Rollbacked result: PhaseTwo_Rollbacked
 ```

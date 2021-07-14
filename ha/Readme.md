@@ -296,7 +296,7 @@ store.mode = "db"
 store.db.datasource=dbcp
 store.db.db-type=mysql
 store.db.driver-class-name=com.mysql.jdbc.Driver
-store.db.url=jdbc:mysql://127.0.0.1:3306/seata_server?useUnicode=true
+store.db.url=jdbc:mysql://db1.com:3306/seata_server?useUnicode=true
 store.db.user=mysql
 store.db.password=mysql
 lock.mode=db
@@ -334,7 +334,7 @@ store {
       ## mysql/oracle/h2/oceanbase etc.
       db-type = "mysql"
       driver-class-name = com.mysql.jdbc.Driver
-      url = "jdbc:mysql://127.0.0.1:3306/seata_server"
+      url = "jdbc:mysql://db1.com:3306/seata_server"
       user = "mysql"
       password = "mysql"
       min-conn = 1

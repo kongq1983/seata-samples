@@ -25,7 +25,7 @@ service {
   #此处是重点,raw-jdbc-group和resources目录下seata.conf文件中transaction.service.group需要匹配,若seata-server服务端未配置该项,会出现TM/RM无法连接seata-server日志输出
   vgroup_mapping.raw-jdbc-group = "default"
   #only support single node
-  default.grouplist = "127.0.0.1:8091"
+  default.grouplist = "seata.com:8091"
   #degrade current not support
   enableDegrade = false
   #disable
